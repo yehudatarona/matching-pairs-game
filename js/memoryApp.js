@@ -131,7 +131,7 @@ const calcScore = () => {
   } else if (is1Star) {
     score = 1;
   }
-  $steps.innerHTML = score;
+  $score.innerHTML = score;
 };
 
 const printCards = (cardsArrray) => {
