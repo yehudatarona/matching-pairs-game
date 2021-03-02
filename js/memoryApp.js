@@ -49,7 +49,7 @@ const $audio = document.getElementById("audio"),
 
 let timerInterval,
   selected = [],
-  timer = 120,
+  timer = 60,
   steps = 0,
   score = 0;
 
@@ -67,6 +67,7 @@ const shuffle = (arrayofItems) => {
 };
 
 const countTime = () => {
+  timer = 60;
   timerInterval = setInterval(() => {
     --timer;
     $timer.innerHTML = timer;
@@ -82,9 +83,9 @@ const countStep = () => {
 };
 
 const checkIfGameOver = () =>{
-    clearInterval(timerInterval);
-    const openCards = (document.getElementsByClassName('open')).length;
-    if(cards.length * 2 == openCards){
+  const openCards = (document.getElementsByClassName('open')).length;
+  if(cards.length * 2 == openCards){
+      clearInterval(timerInterval);
         setTimeout(() => {
             Swal.fire({
                 // icon: "success",
@@ -103,7 +104,6 @@ const checkIfGameOver = () =>{
                 }
             });
 
-            
         }, 800);
 
     }
@@ -168,7 +168,7 @@ const flipCards = (isCorrect) => {
     });
     $board.classList.remove("compare");
     checkGameState();
-  }, 800);
+  }, 500);
 };
 
 $board.addEventListener("click", (e) => {
