@@ -67,11 +67,12 @@ const shuffle = (arrayofItems) => {
 };
 
 const countTime = () => {
-  timer = 60;
+  timer = 10;
   timerInterval = setInterval(() => {
     --timer;
     $timer.innerHTML = timer;
     if (!timer) {
+      gameOverMessage();
       clearInterval(timerInterval);
     }
   }, 1000);
@@ -82,30 +83,56 @@ const countStep = () => {
   $steps.innerHTML = steps;
 };
 
+const gameOverMessage = ()=>{
+  setTimeout(() => {
+    Swal.fire({
+        // icon: "success",
+        imageUrl: 'https://cdn.pixabay.com/photo/2016/10/10/01/49/hook-1727484_150.png',
+        title: "Game Over",
+        text: `Your Score is ${score}`,
+        confirmButtonText: "Play Again",
+        showDenyButton: true,
+    }).then((result) => {
+        console.log(result);
+        if (result.isConfirmed) {
+          
+            startGame();
+        } else if (result.isDenied) {
+            console.log("Bye");
+            $start.classList.remove('hide')
+        }
+    });
+
+}, 800);
+  
+
+}
 const checkIfGameOver = () =>{
   const openCards = (document.getElementsByClassName('open')).length;
-  if(cards.length * 2 == openCards || !timer){
+ 
+  if(cards.length * 2 == openCards){
       clearInterval(timerInterval);
-        setTimeout(() => {
-            Swal.fire({
-                // icon: "success",
-                imageUrl: 'https://cdn.pixabay.com/photo/2016/10/10/01/49/hook-1727484_150.png',
-                title: "Game Over",
-                text: `Your Score is ${score}`,
-                confirmButtonText: "Play Again",
-                showDenyButton: true,
-            }).then((result) => {
-                console.log(result);
-                if (result.isConfirmed) {
+      gameOverMessage();
+        // setTimeout(() => {
+        //     Swal.fire({
+        //         // icon: "success",
+        //         imageUrl: 'https://cdn.pixabay.com/photo/2016/10/10/01/49/hook-1727484_150.png',
+        //         title: "Game Over",
+        //         text: `Your Score is ${score}`,
+        //         confirmButtonText: "Play Again",
+        //         showDenyButton: true,
+        //     }).then((result) => {
+        //         console.log(result);
+        //         if (result.isConfirmed) {
                   
-                    startGame();
-                } else if (result.isDenied) {
-                    console.log("Bye");
-                    $start.classList.remove('hide')
-                }
-            });
+        //             startGame();
+        //         } else if (result.isDenied) {
+        //             console.log("Bye");
+        //             $start.classList.remove('hide')
+        //         }
+        //     });
 
-        }, 800);
+        // }, 800);
 
     }
 
