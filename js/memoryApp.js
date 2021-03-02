@@ -89,7 +89,7 @@ const gameOverMessage = ()=>{
         // icon: "success",
         imageUrl: 'https://cdn.pixabay.com/photo/2016/10/10/01/49/hook-1727484_150.png',
         title: "Game Over",
-        text: `Your Score: ${score} Steps: ${steps} Time: ${timer}`,
+        text: `Your Score: ${score}, Steps: ${steps} and Time: ${timer}`,
         confirmButtonText: "Play Again",
         showDenyButton: true,
     }).then((result) => {
