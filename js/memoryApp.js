@@ -97,6 +97,7 @@ const checkIfGameOver = () =>{
             }).then((result) => {
                 console.log(result);
                 if (result.isConfirmed) {
+                  
                     startGame();
                 } else if (result.isDenied) {
                     console.log("Bye");
@@ -150,7 +151,10 @@ $board.innerHTML = '';
 };
 
 const startGame = () => {
-
+  steps = 0;
+  score = 0;
+  $steps.innerHTML = steps;
+  $score.innerHTML = score;
   printCards(cards);
   countTime();
 };
