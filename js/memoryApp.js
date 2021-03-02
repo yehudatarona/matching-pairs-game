@@ -84,7 +84,7 @@ const countStep = () => {
 
 const checkIfGameOver = () =>{
   const openCards = (document.getElementsByClassName('open')).length;
-  if(cards.length * 2 == openCards){
+  if(cards.length * 2 == openCards || !timer){
       clearInterval(timerInterval);
         setTimeout(() => {
             Swal.fire({
