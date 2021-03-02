@@ -67,7 +67,7 @@ const shuffle = (arrayofItems) => {
 };
 
 const countTime = () => {
-  timer = 10;
+  timer = 60;
   timerInterval = setInterval(() => {
     --timer;
     $timer.innerHTML = timer;
